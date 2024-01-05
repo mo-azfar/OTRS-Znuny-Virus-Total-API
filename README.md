@@ -8,9 +8,9 @@
  
  3. Each method required 3 different ticket dynamic field (text) as a source data.
  
-	Hash
-	IPAddress
-	Domain
+		Hash  
+		IPAddress  
+		Domain  
  
  4. Admin > Generic Agent
 
