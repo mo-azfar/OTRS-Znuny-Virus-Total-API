@@ -1,0 +1,96 @@
+---
+Debugger:
+  DebugThreshold: debug
+  TestMode: '0'
+Description: ''
+FrameworkVersion: 7.0.14
+Provider:
+  Transport:
+    Type: ''
+RemoteSystem: ''
+Requester:
+  Invoker:
+    GetDomain:
+      Description: check domain (using Generic Agent Event)
+      GetAllArticleAttachments: '0'
+      MappingOutbound:
+        Config:
+          DataInclude: []
+          ForceArray: ''
+          KeepAttributes: ''
+          PostRegExFilter: ~
+          PostRegExValueCounter: ~
+          PreRegExFilter: ~
+          PreRegExValueCounter: ~
+          Template: "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<xsl:transform
+            version=\"1.0\" xmlns:xsl=\"http://www.w3.org/1999/XSL/Transform\" xmlns:date=\"http://exslt.org/dates-and-times\"
+            extension-element-prefixes=\"date\">\r\n    <xsl:output method=\"xml\"
+            encoding=\"utf-8\" indent=\"yes\"/>\r\n    <xsl:template match=\"RootElement\">\r\n
+            \       <xsl:copy>\r\n          <Domain><xsl:value-of select=\"//Ticket/DynamicField_Domain\"
+            /></Domain>\r\n        </xsl:copy>\r\n    </xsl:template>\r\n</xsl:transform>"
+        Type: XSLT
+      Type: Ticket::Generic
+    GetHash:
+      Description: check hash (using Generic Agent Event)
+      GetAllArticleAttachments: '0'
+      MappingOutbound:
+        Config:
+          DataInclude: []
+          ForceArray: ''
+          KeepAttributes: ''
+          PostRegExFilter: ~
+          PostRegExValueCounter: ~
+          PreRegExFilter: ~
+          PreRegExValueCounter: ~
+          Template: "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<xsl:transform
+            version=\"1.0\" xmlns:xsl=\"http://www.w3.org/1999/XSL/Transform\" xmlns:date=\"http://exslt.org/dates-and-times\"
+            extension-element-prefixes=\"date\">\r\n    <xsl:output method=\"xml\"
+            encoding=\"utf-8\" indent=\"yes\"/>\r\n    <xsl:template match=\"RootElement\">\r\n
+            \       <xsl:copy>\r\n          <Hash><xsl:value-of select=\"//Ticket/DynamicField_Hash\"
+            /></Hash>\r\n        </xsl:copy>\r\n    </xsl:template>\r\n</xsl:transform>"
+        Type: XSLT
+      Type: Ticket::Generic
+    GetIP:
+      Description: check ip (using Generic Agent Event)
+      Events: []
+      GetAllArticleAttachments: '0'
+      MappingOutbound:
+        Config:
+          DataInclude: []
+          ForceArray: ''
+          KeepAttributes: ''
+          PostRegExFilter: ~
+          PostRegExValueCounter: ~
+          PreRegExFilter: ~
+          PreRegExValueCounter: ~
+          Template: "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<xsl:transform
+            version=\"1.0\" xmlns:xsl=\"http://www.w3.org/1999/XSL/Transform\" xmlns:date=\"http://exslt.org/dates-and-times\"
+            extension-element-prefixes=\"date\">\r\n    <xsl:output method=\"xml\"
+            encoding=\"utf-8\" indent=\"yes\"/>\r\n    <xsl:template match=\"RootElement\">\r\n
+            \       <xsl:copy>\r\n          <IP><xsl:value-of select=\"//Ticket/DynamicField_IPAddress\"
+            /></IP>\r\n        </xsl:copy>\r\n    </xsl:template>\r\n</xsl:transform>"
+        Type: XSLT
+      Type: Ticket::Generic
+  Transport:
+    Config:
+      AdditionalHeaders:
+        x-apikey: XXXXXXXXXXXX
+      ContentType: JSON
+      DefaultCommand: GET
+      Host: https://www.virustotal.com/api/v3
+      InvokerControllerMapping:
+        Files:
+          Command: GET
+          Controller: /files/:Hash
+        GetDomain:
+          Command: GET
+          Controller: /domains/:Domain
+        GetHash:
+          Command: GET
+          Controller: /files/:Hash
+        GetIP:
+          Command: GET
+          Controller: /ip_addresses/:IP
+      SSLNoHostnameVerification: '0'
+      Timeout: '30'
+    Type: HTTP::REST
