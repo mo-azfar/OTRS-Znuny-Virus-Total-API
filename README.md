@@ -15,21 +15,21 @@
  4. Admin > Generic Agent
 
 
-	- Name: TotalVirus Hash
-	- Event: TicketDynamicFieldUpdate_Hash
-	
-	- Select Tickets
-	-- Ticket# = *
-	--  DynamicField_Hash = *
-	
-	- Execute Custom Module
-	-- Module = Kernel::System::GenericAgent::VirusTotalHash
-	
-	-- Param 1 key	||	Param 1 value
-	--- Webservice	||	VirusTotal
-	
-	-- Param 2 key	||	Param 2 value
-	--- Invoker		||	GetHash
+		- Name: TotalVirus Hash
+		- Event: TicketDynamicFieldUpdate_Hash
+		
+		- Select Tickets
+		-- Ticket# = *
+		--  DynamicField_Hash = *
+		
+		- Execute Custom Module
+		-- Module = Kernel::System::GenericAgent::VirusTotalHash
+		
+		-- Param 1 key	||	Param 1 value
+		--- Webservice	||	VirusTotal
+		
+		-- Param 2 key	||	Param 2 value
+		--- Invoker		||	GetHash
 	
 	
 	
