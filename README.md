@@ -1,6 +1,11 @@
 # OTRS-Znuny-Virus-Total-API
- collection of generic agent modules files to interact with VirusTotal api
- 
+- collection of generic agent modules files to interact with VirusTotal api
+- execute predefined webservice. 
+- all the sent data payload (Mapping for outgoing request data), endpoint, authentication handle by the defined webservice itself.
+- why use this method? the response json return invalid xml attributes when converting.
+- can be tackle by pre-filter regex, but to avoid future unknown invalid attribute, use this module. 
+- also allow more data mapping due complicated hash / array response data
+	
  1. Upload webservices file (VirusTotal.yml) to znuny/otrs.
  2. Update your VirusTotal api key at Webservice (VirusTotal) > Znuny as requester > Network transport > HTTP::REST > Header
  
@@ -68,3 +73,5 @@
 		-- Param 2 key	||	Param 2 value
 		--- Invoker		||	GetIP
  
+ 
+	
